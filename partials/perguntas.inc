@@ -1,6 +1,7 @@
 <?php
 include "partials/menu.inc";
 function carregaPergunta($id, $enunciados, $alternativas){
+    echo '<div class="col16" id="holder">';
     echo '<div class="col8" id="perguntas">';
     echo "<h3> {$enunciados[$id]} </h3>";
     echo "<ol type='A'>";
@@ -8,6 +9,7 @@ function carregaPergunta($id, $enunciados, $alternativas){
         echo "<li>{$alternativas[$id][$y]} </li>";
     }
     echo "</ol>";
+    echo "</div>";
     echo "</div>";
     include "partials/rodape.inc";
 }

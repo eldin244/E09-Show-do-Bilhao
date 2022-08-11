@@ -96,7 +96,7 @@ body{
   background-color: var(--color4);
   border-top: solid black 2px;
   bottom: 0;
-  position: absolute;
+  position: fixed;
 }
 
 h1{
@@ -110,7 +110,7 @@ p, li, h3{
 #perguntas{
   border: solid black 1px;
   border-radius: 10px;
-  margin: 1%;
+  margin: auto;
   background-color: var(--color5);
 }
 
@@ -120,4 +120,16 @@ p, li, h3{
 
 h1, p{
   background-color: var(--color4);
+}
+
+#footer{
+  position: fixed;
+  left: 0;
+  bottom: 0; 
+}
+
+#holder{
+    display: flex;
+    height: 60vh;
+    justify-content: center; 
 }
