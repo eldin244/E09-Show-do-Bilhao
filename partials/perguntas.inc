@@ -1,16 +1,33 @@
 <?php
 include "partials/menu.inc";
 function carregaPergunta($id, $enunciados, $alternativas){
-    echo '<div class="col16" id="holder">';
-    echo '<div class="col8" id="perguntas">';
-    echo "<h3> {$enunciados[$id]} </h3>";
-    echo "<ol type='A'>";
-    for($y = 0; $y < count($alternativas[$id]); $y++){
-        echo "<li>{$alternativas[$id][$y]} </li>";
+    $respostas = [0,3,1,0,2,0];   
+    if (isset($_POST['resposta'])){
+        $resposta = $_POST['resposta'];
+        if ($resposta != $respostas[$id]){
+            header("Location: /derrota.php");
+        }
     }
-    echo "</ol>";
+    $x = $id + 1;
+    echo "<form action='pergunta.php?id=$x' method='post'>";
+    $x++;
+    echo '<div class="col16" id="holder">';
+        echo '<div class="col8" id="perguntas">';
+            echo "<h3> {$enunciados[$id]} </h3>";
+            echo "<ol type='A'>";
+                for($y = 0; $y < count($alternativas[$id]); $y++){
+                    echo '<div class="col16" id="alternativas">';
+                        echo "<input type='radio' name='resposta' value='$y'>"; 
+                        echo "<li>{$alternativas[$id][$y]} </li>";
+                    echo "</div>";
+                }
+            echo "</ol>";
+            echo '<div class="col16" id="enviar">';
+                echo '<button type="submit">Confirmar</button>';
+            echo "</div>";
+        echo "</div>";
     echo "</div>";
-    echo "</div>";
+    echo "</form>";
     include "partials/rodape.inc";
 }
 $enunciados = [
