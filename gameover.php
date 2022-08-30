@@ -11,18 +11,24 @@
     <?php
     session_start();
     include "partials/menu.inc";
-    echo '<div class="col16" id="holder">';
-    echo '<div class="col8" id="derrota-vitoria-box">';
-        $premiacao = $_SESSION["premiacao"];
-        echo "<p>Premiação: R$ $premiacao </p>";
-        echo "<form action='showdobilhao.php?id=0' method='post'>";
-        echo '<button type="submit">Jogar Novamente</button>';
-        echo "</form>";
-        $time = time();
-        setcookie("premiacao", $premiacao);
-        setcookie("time", $time);
-    echo "</div>";    
-    echo "</div>";    
+    ?>
+    <div class="col16" id="holder">
+        <div class="col8" id="derrota-vitoria-box">
+            <?php
+            $premiacao = $_SESSION["premiacao"];
+            echo "<p>Premiação: R$ $premiacao </p>";
+            ?>
+            <form action='showdobilhao.php?id=0' method='post'>
+                <button type="submit">Jogar Novamente</button>
+            </form>
+            <?php
+            $time = time();
+            setcookie("premiacao", $premiacao);
+            setcookie("time", $time);
+            ?>
+        </div>
+    </div>   
+    <?php 
     include "partials/rodape.inc";
     $_SESSION["premiacao"] = 0;
     ?>
